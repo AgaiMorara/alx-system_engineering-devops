@@ -1,1 +1,1 @@
-The journey officially begun
+Manipululate basic commands in shell to perform common operations
