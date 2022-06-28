@@ -1,2 +1,2 @@
 #!/bin/bang
-/etc/password| less
+cat /etc/passwd
