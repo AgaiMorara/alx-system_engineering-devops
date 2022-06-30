@@ -1,2 +1,2 @@
 #!/bin/bash
-fgrep -i root /etc/password
+grep -i root /etc/password
