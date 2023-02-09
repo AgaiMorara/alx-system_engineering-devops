@@ -1,0 +1,1 @@
+File permissions. why bother.... never should you get locked out unkowingly.... everydetail on the permissions and organization should be made handy by your practice.
