@@ -1,0 +1,2 @@
+Redirections and pipes... pipe from command to command... Redirect input to files, devices or other outputs.... \
+Handy commands like grep, awk... some special characters... Make working around the shell more intuitive.
