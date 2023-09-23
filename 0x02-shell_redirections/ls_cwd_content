@@ -1,0 +1,34 @@
+total 128
+drwxrwxr-x 2 agai agai 4096 Ful 23 17:27 .
+drwxrwxr-x 8 agai agai 4096 Ful 23 14:09 ..
+-rwxrwxr-x 1 agai agai   32 Ful 14 15:01 0-hello_world
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 10-no_more_js
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 11-directories
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 12-newest_files
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 13-unique
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 14-findthatword
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 15-countthatword
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 16-whatsnext
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 17-hidethisword
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 18-letteronly
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 19-AZ
+-rwxrwxr-x 1 agai agai   32 Ful 14 15:01 1-confused_smiley
+-rwxrwxr-x 1 agai agai   32 Ful 14 15:01 1-confused_smiley~
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 20-hiago
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 21-reverse
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 22-users_and_homes
+-rwxrwxr-x 1 agai agai   28 Ful 14 15:01 2-hellofile
+-rwxrwxr-x 1 agai agai   40 Ful 14 15:01 3-twofiles
+-rwxrwxr-x 1 agai agai   29 Ful 14 15:01 4-lastlines
+-rwxrwxr-x 1 agai agai   29 Ful 14 15:01 5-firstlines
+-rwxrwxr-x 1 agai agai   36 Ful 14 15:01 6-third_line
+-rwxrwxr-x 1 agai agai   72 Ful 14 15:13 7-file
+-rwxrwxr-x 1 agai agai   36 Ful 23 17:27 8-cwd_state
+-rwxrwxr-x 1 agai agai   12 Ful 14 15:01 9-duplicate_last_line
+-rw-rw-r-- 1 agai agai   34 Ful 14 15:13 *\\'"Best
+-rw-rw-r-- 1 agai agai   12 Ful 14 15:11 *\\Best School\*\\*$?*****:)
+-rw-rw-r-- 1 agai agai   12 Ful 14 15:06 \*\\"Best School"\'\\*$\?\*\*\*\*\*:)
+-rw-rw-r-- 1 agai agai   12 Ful 14 15:03 \*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+-rw-rw-r-- 1 agai agai   12 Ful 14 15:07 \*\\'Best School''\\*$\?\*\*\*\*\*:)
+-rw-rw-r-- 1 agai agai    0 Ful 23 17:27 ls_cwd_content
+-rw-rw-r-- 1 agai agai  219 Ful 14 15:01 README.md
