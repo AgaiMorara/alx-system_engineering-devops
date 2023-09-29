@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# echos "Best school until iter is 10"
+iter=0
+
+until [ $iter -ge 10 ]; do
+  echo "Best school"
+
+  iter=$((iter + 1))
+done

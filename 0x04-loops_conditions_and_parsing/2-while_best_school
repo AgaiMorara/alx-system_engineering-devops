@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#Displays string 10 times... employs while loop
+iter=0
+
+while [ $iter -lt 10 ]; do
+  echo "Best school"
+  iter=$((iter + 1))
+done

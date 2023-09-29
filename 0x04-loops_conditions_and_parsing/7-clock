@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Displays the time in 12-hour clock system using HH, MM
+
+hour=0
+
+while [ $hour -le 12 ]; do
+  echo "Hour: $hour"
+  minute=1
+
+  while [ $minute -le 59 ]; do
+    echo "$minute"
+    ((minute++))
+  done
+
+  ((hour++))
+done
