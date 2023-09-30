@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
 # creates the file '/var/run/myscript.pid' containing its PID
-#Displays To infinity and beyond indefinitely
-#Displays I hate the kill command when receiving a SIGTERM signal
-#Displays Y U no love me?! when receiving a SIGINT signal
-#Deletes /var/run/myscript.pid and terminates itself when receiving
-#a SIGQUIT signal
+# Displays To infinity and beyond indefinitely
+# Displays I hate the kill command when receiving a SIGTERM signal
+# Displays Y U no love me?! when receiving a SIGINT signal
+# Deletes /var/run/myscript.pid and terminates itself when receiving
+# a SIGQUIT signal
 
 i_die()
 {
-rm /var/run/myscript.pid
-exit
+  rm /var/run/myscript.pid
+  exit
 }
 
+# Set up signal handlers
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command"; i_die' SIGTERM
+trap 'i_die' SIGQUIT
+
+# Create the PID file
 echo "$$" > /var/run/myscript.pid
 
+# Infinite loop
 while true;
 do
   echo "To infinity and beyond"
   sleep 2
-  trap 'echo "Y U no love me?!"' SIGINT
-  trap 'echo "I hate the kill command" && terminator' SIGTERM
-  trap 'i_die' SIGQUIT
 done
