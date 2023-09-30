@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Display a list of Processes for all users, including those who might not
+#have a tty
+
+ps -auxf

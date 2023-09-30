@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Emulates actions of 4-to_infinity and beyond, this time it
+#prints "I am invincible !!!" when receiving SIGTERM signal
+while true;
+do
+    echo "To infinity and beyond"
+    sleep 2
+    trap 'echo "I am invincible !!!"' SIGTERM
+done

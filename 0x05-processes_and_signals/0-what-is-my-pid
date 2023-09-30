@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Reports the process id running this script
+
+echo "$$"
