@@ -1,3 +1,0 @@
-#! /usr/bin/env bash
-#Pings an Ip address received as an argument 5 times.
-
