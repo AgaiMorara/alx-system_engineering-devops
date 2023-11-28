@@ -1,0 +1,6 @@
+# Configuration file if we only need to connect to this server without password
+
+Host 54.90.35.82
+    IdentityFile ~/.ssh/school
+    PreferredAuthentications publickey
+    PasswordAuthentication no
