@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+#validate number of params
+if ("$#" -ne 4]; then
+    exit 1
+fi
+
+file_path=$1
+server_ip=$2
+username=$3
+ssh_key=$4
+
+# Transfer file using SCP TO server home
+scp -o StrictHostKeyChecking=no -i "$ssh_key" "$file_path" "$username@$server_ip":~/
+
+exit 0
