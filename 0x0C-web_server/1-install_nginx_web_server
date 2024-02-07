@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
-#install nginx, make success message "Hello world" listen at port 80
-sudo apt-get -y  update
+# Install nginx
+sudo apt-get -y update
 sudo apt-get install -y nginx
 
-#create Hello World HTML page
-echo "Hello world!" | sudo tee /var/www/html/ *.html > /dev/null
+# Create Hello World HTML page
+echo "Hello world!" | sudo tee /var/www/html/index.html > /dev/null
 
-printf %s "server {
-     listen      80 default_server;
-     listen      [::]:80 default_server;
-     root        /var/www/html;
-     index       index.html index.htm;
-}
-" > /var/www/html/
+# Configure nginx server block to serve index.html
+printf '%s\n' "server {
+    listen      80 default_server;
+    listen      [::]:80 default_server;
+    root        /var/www/html;
+    index       index.html index.html;
+}" | sudo tee /etc/nginx/sites-available/default > /dev/null
 
+# Restart nginx
 sudo service nginx restart
