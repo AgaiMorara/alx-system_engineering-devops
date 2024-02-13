@@ -7,12 +7,12 @@ sudo apt-get install -y nginx
 echo "Hello world!" | sudo tee /var/www/html/index.html > /dev/null
 
 # Configure nginx server block to serve index.html
-printf '%s\n' "server {
+cat <<EOF | sudo tee /etc/nginx/sites-available/default > /dev/null
+
+server {
     listen      80 default_server;
     listen      [::]:80 default_server;
     root        /var/www/html;
-    index       index.html index.nginx-debian.html;
-}" | sudo tee /etc/nginx/sites-available/default > /dev/null
-
-# Restart nginx
-sudo service nginx restart
+    index       index.html ;
+}
+EOF
