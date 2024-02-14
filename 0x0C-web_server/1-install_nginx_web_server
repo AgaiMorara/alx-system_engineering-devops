@@ -4,7 +4,7 @@ sudo apt-get -y update
 sudo apt-get install -y nginx
 
 # Create Hello World HTML page
-echo "Hello World!"
+echo "Hello World!" |
     sudo tee /var/www/html/index.html /usr/share/nginx/index.html > /dev/null
 
 # Configure nginx server block to serve index.html
