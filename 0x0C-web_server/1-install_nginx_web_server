@@ -4,15 +4,23 @@ sudo apt-get -y update
 sudo apt-get install -y nginx
 
 # Create Hello World HTML page
-echo -n  "Hello World!" | sudo tee /usr/share/nginx/index.html > /dev/null
+echo -n  "Hello World!" | sudo tee /usr/share/nginx/index.html
 
 # Configure nginx server block to serve index.html
-cat <<EOF | sudo tee /usr/share/nginx/index.html  > /dev/null
-
+new_configurations="
 server {
-    listen      80 default_server;
-    listen      [::]:80 default_server;
-    root        /usr/share/nginx;
-    index       index.html ;
+       listen 80 default_server;
+       listen [::]:80 default_server;
+
+       root /usr/share/nginx;
+       index index.html;
+
+       location / {
+       index.html index.thm ;
+       }
 }
-EOF
+"
+
+sudo sed -i '/^\s*server\s*{/,/^\s*}\s*$/d' /etc/nginx/nginx.conf
+echo "$new_configurations" | sudo tee -a /etc/nginx/nginx.conf
+sudo killall -HUP nginx
