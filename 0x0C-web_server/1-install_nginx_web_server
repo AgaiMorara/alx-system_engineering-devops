@@ -15,8 +15,7 @@ sudo apt-get -y update
 sudo apt-get install -y nginx
 
 # Create Hello World HTML page
-echo -n  "Hello World!" | sudo /var/www/index.html >/dev/null 
-echo -n  "\n                 " | sudo /var/www/index.html >/dev/null
+echo  "Hello World!" | /var/www/index.html >/dev/null
 # Configure nginx server block to serve index.html
 cat <<EOF | sudo /etc/nginx/conf.d/default.conf  > /dev/null
 server {
