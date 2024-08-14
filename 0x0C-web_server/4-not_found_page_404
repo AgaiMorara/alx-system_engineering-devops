@@ -1,28 +1,29 @@
 #!/usr/bin/env bash
+#This script installs nginx
+# Install nginx
 
-sudo apt-get -y  update
-sudo apt-get install -y  nginx
-echo "Hello world!" |sudo  tee /usr/share/nginx/html/index.html
-service nginx restart
-printf %s "server {
-    listen 80;
-    listen [::]:80 default_server;
-    root   /usr/share/nginx/html;
-    index  index.html index.htm;
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+# Configure nginx to listen on port 80 and serve "Hello World!" at the root
+sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
+sudo bash -c 'echo "Ceci n'est pas une page" > /var/www/html/custom_404.html'
+sudo bash -c 'cat > /etc/nginx/sites-available/default << EOF+-+-
+server {
 
-    location /redirect_me {
-        return 301 http:www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
- error_page 404 /404.html;
-    location /404 {
-      root /usr/share/nginx/html;
-      internal;
-    }
-}" > $CONFIG_FILE
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+	location /redirect_me {
+		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4 
+	}
+}
+EOF'	
 
-# start nginx after reloading config
-service nginx start
-}" > $CONFIG_FILE
-
-# start nginx after reloading config
-service nginx start
+# Restart nginx
+sudo service nginx restart
