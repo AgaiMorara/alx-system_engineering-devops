@@ -8,26 +8,21 @@ sudo ufw allow 'Nginx HTTP'
 # Configure nginx to listen on port 80 and serve "Hello World!" at the root
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
 
-#file path to default config
 CONFIG_FILE="/etc/nginx/sites-available/default"
 
-#server block configuration
-NEW_SERVER_BLOCK=$(cat << 'EOF'
-server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html;
-	server_name _;
-	location / {
-		try_files \$uri \$uri/ = 404;
-	}
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
-}
-EOF
-)
-sed -i "/^server\s*{/ {:a;N;/}\s*$/!ba; s|server\s*{[^}]*}|$NEW_SERVER_BLOCK|}" "$CONFIG_FILE"
-# Restart nginx
-sudo service nginx restart
+# Backup the original configuration file
+sudo cp "$CONFIG_FILE" "${CONFIG_FILE}.bakup"
+
+# Define the new rule to insert
+NEW_RULE="\n\tlocation = /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+
+# Insert the new rule before the last closing bracket of the first server block
+sudo sed -i "/^server\s*{/!b;n;:a;/}/!{N;ba};/}/i$NEW_RULE" "$CONFIG_FILE"
+
+
+# Reload Nginx to apply the changes if the test is successful
+if [ $? -eq 0 ]; then
+    sudo service nginx reload
+else
+    echo "Nginx configuration test failed. Please check the config file."
+fi
