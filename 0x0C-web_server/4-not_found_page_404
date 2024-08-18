@@ -1,29 +1,22 @@
 #!/usr/bin/env bash
-#This script installs nginx
-# Install nginx
+# makes /redirect_me to redirect to another page
 
-sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-# Configure nginx to listen on port 80 and serve "Hello World!" at the root
-sudo bash -c 'echo "Hello World!" > /var/www/html/index.html'
-sudo bash -c 'echo "Ceci n'est pas une page" > /var/www/html/custom_404.html'
-sudo bash -c 'cat > /etc/nginx/sites-available/default << EOF+-+-
-server {
+sudo apt-get -y  update
+sudo apt-get install -y  nginx
+mkdir -p /etc/nginx/html && touch /etc/nginx/html/index.html
 
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html;
-	server_name _;
-	location / {
-		try_files \$uri \$uri/ =404;
-	}
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4 
-	}
-}
-EOF'	
+echo "Hello world!" > /etc/nginx/html/index.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html index.htm;
 
-# Restart nginx
-sudo service nginx restart
+    location /redirect_me {
+        return 301 http:www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" > /etc/nginx/sites-available/default
+
+# start nginx after reloading config
+service nginx restart
