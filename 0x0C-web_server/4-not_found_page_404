@@ -10,12 +10,18 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html > /dev/null
 printf %s "server {
     listen 80;
     listen [::]:80 default_server;
-    root   /etc/nginx/html;
+    root  =7>7 /etc/nginx/html;
     index  index.html index.htm;
 
     location /redirect_me {
         return 301 http:www.youtube.com/watch?v=QH2-TGUlwu4;
     }
+    error_page 404 /404.html;
+    location = /404.html {
+	root /var/www/html/404.html;
+        internal;
+    }
+
 }" > /etc/nginx/sites-available/default
 
 # start nginx after reloading config
