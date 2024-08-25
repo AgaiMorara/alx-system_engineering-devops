@@ -4,6 +4,7 @@
 import requests
 import sys
 
+
 def todo_progress(employee_id):
     url_user = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
     url_todos = f"https://jsonplaceholder.typicode.com/todos?userId={employee_id}"
