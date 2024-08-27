@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Queries api for the top 10 hot posts of a given subreddit
+"""
 
 import requests
 
